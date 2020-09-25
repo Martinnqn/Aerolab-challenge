@@ -25,9 +25,9 @@ const ContainerProducts = styled.div`
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
-  background: gray;
+  background: #d0d0d0;
   justify-content: center;
-  grid-gap: 10px;
+  grid-gap: 11px;
 `;
 
 export default ListProducts;

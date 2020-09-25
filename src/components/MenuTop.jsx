@@ -32,11 +32,12 @@ const MenuTop = ({ totalPrice, cantProducts }) => {
 const ContainerMenu = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   background: white;
   color: #006de3;
   height: 62px;
-
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.12);
   ul {
     display: flex;
     align-items: center;
