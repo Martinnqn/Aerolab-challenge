@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import MenuTop from "./components/MenuTop";
 import ListProducts from "./components/ListProducts";
-import styled from "styled-components/macro";
+import styled, { ThemeProvider } from "styled-components/macro";
+import ThemeContext from "./contexts/ThemeContext";
+import theme, { SFProText } from "./themes/Theme";
 
 const URL_API = "https://challenge-api.aerolab.co/";
 
@@ -57,6 +59,36 @@ const products = [
     originalPrice: 55.9,
     updatedAt: "2020-08-25T00:44:33+00:00",
   },
+  {
+    id: "7794000960145",
+    name: "Mayonesa Light Doypack Hellmanns",
+    price: 55.9,
+    presentation: "237 gr",
+    brand: "Hellmann's",
+    photo: "https://challenge-api.aerolab.co/static/products/7794000960145.jpg",
+    originalPrice: 55.9,
+    updatedAt: "2020-08-25T00:44:33+00:00",
+  },
+  {
+    id: "7794000960145",
+    name: "Mayonesa Light Doypack Hellmanns",
+    price: 55.9,
+    presentation: "237 gr",
+    brand: "Hellmann's",
+    photo: "https://challenge-api.aerolab.co/static/products/7794000960145.jpg",
+    originalPrice: 55.9,
+    updatedAt: "2020-08-25T00:44:33+00:00",
+  },
+  {
+    id: "7794000960145",
+    name: "Mayonesa Light Doypack Hellmanns",
+    price: 55.9,
+    presentation: "237 gr",
+    brand: "Hellmann's",
+    photo: "https://challenge-api.aerolab.co/static/products/7794000960145.jpg",
+    originalPrice: 55.9,
+    updatedAt: "2020-08-25T00:44:33+00:00",
+  },
 ];
 
 function App() {
@@ -64,17 +96,20 @@ function App() {
   const [listProducts, setListProduct] = useState(products);
 
   return (
-    <ContainerApp>
-      <MenuTop totalPrice={totalPrice} cantProducts={listProducts.length} />
-      <ListProducts listProducts={listProducts} />
-    </ContainerApp>
+    <ThemeProvider theme={theme}>
+      <SFProText />
+      <ContainerApp>
+        <MenuTop totalPrice={totalPrice} cantProducts={listProducts.length} />
+        <ListProducts listProducts={listProducts} />
+      </ContainerApp>
+    </ThemeProvider>
   );
 }
 
 const ContainerApp = styled.div`
   height: 100vh;
   width: 100vw;
-  font-family: SFProText-Regular;
+  font-family: SFProText;
 `;
 
 export default App;

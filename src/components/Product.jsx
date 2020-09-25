@@ -5,7 +5,7 @@ const Product = ({ image, title, price, originalPrice, addToCart }) => {
   return (
     <ContainerProduct>
       <Img src={image} alt={title} />
-      <TitleProduct fontSize="14px">{title}</TitleProduct>
+      <TitleProduct>{title}</TitleProduct>
       <Price>
         {originalPrice !== price && (
           <SpanOriginalPrice>{originalPrice}</SpanOriginalPrice>
@@ -25,6 +25,8 @@ const ContainerProduct = styled.div`
   max-width: 148px;
   max-height: 299px;
   padding: 8px;
+  margin-right: 11px;
+  margin-top: 11px;
 `;
 
 const Img = styled.img`
@@ -38,8 +40,7 @@ const TitleProduct = styled.p`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  font-size: ${(props) => props.fontSize};
-  color: ${(props) => props.color};
+  font-size: 14px;
   margin-top: 8px;
   margin-bottom: 8px;
 `;
@@ -49,9 +50,9 @@ const Price = styled.p`
   line-height: 19px;
   justify-content: space-evenly;
   display: flex;
-  color: #0070e0;
+  color: ${(props) => props.theme.primary};
   margin: auto;
-  family: "bold";
+  font-weight: bold;
 `;
 
 const SpanOriginalPrice = styled.span`
@@ -66,7 +67,7 @@ const SpanOriginalPrice = styled.span`
 const AddCartButton = styled.button`
   color: #0070e0;
   font-size: 13px;
-  border: 1px solid #0070e0;
+  border: 1px solid ${(props) => props.theme.primary};
   border-radius: 3px;
   background: white;
   width: 132px;

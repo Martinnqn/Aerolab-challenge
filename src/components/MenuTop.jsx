@@ -11,7 +11,8 @@ const MenuTop = ({ totalPrice, cantProducts }) => {
           <img src={logo} />
         </li>
         <li>
-          <span>EzShop</span>
+          <SpanBrand>Ez</SpanBrand>
+          <span>Shop</span>
         </li>
       </ul>
       <ul>
@@ -34,7 +35,7 @@ const ContainerMenu = styled.div`
   align-items: center;
   justify-content: space-around;
   background: white;
-  color: #006de3;
+  color: ${(props) => props.theme.secondary};
   height: 62px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04),
     inset 0 -1px 0 0 rgba(0, 0, 0, 0.12);
@@ -51,13 +52,18 @@ const ContainerMenu = styled.div`
 const SpanCantProducts = styled.span`
   vertical-align: 80%;
   margin-left: -10px;
-  background: #0070e0;
+  background: ${(props) => props.theme.primary};
   width: 22px;
   height: 22px;
   border-radius: 50%;
   color: white;
   text-align: center;
   display: inline-block;
+`;
+
+const SpanBrand = styled.span`
+  font-weight: bold;
+  color: ${(props) => props.theme.secondary};
 `;
 
 export default MenuTop;

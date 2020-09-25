@@ -27,7 +27,6 @@ const ContainerProducts = styled.div`
   flex-wrap: wrap;
   background: #d0d0d0;
   justify-content: center;
-  grid-gap: 11px;
 `;
 
 export default ListProducts;
