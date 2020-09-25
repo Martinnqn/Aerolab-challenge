@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 
 const Product = ({ image, title, price, originalPrice, addToCart }) => {
   return (
-    <ContainerProduct>
+    <CardProduct>
       <Img src={image} alt={title} />
       <TitleProduct>{title}</TitleProduct>
       <Price>
@@ -15,18 +15,18 @@ const Product = ({ image, title, price, originalPrice, addToCart }) => {
       <AddCartButton onClick={() => addToCart}>
         Agregar al carrito
       </AddCartButton>
-    </ContainerProduct>
+    </CardProduct>
   );
 };
 
-const ContainerProduct = styled.div`
+const CardProduct = styled.div`
   text-align: center;
   background: white;
   max-width: 148px;
   max-height: 299px;
   padding: 8px;
-  margin-right: 11px;
-  margin-top: 11px;
+  border-radius: 3px;
+  margin-bottom: 16px;
 `;
 
 const Img = styled.img`
@@ -74,6 +74,13 @@ const AddCartButton = styled.button`
   height: 32px;
   margin-top: 16px;
   margin-bottom: 8px;
+  &:active {
+    color: white;
+    background: ${(props) => props.theme.primary};
+  }
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default Product;

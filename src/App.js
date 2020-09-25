@@ -4,7 +4,7 @@ import MenuTop from "./components/MenuTop";
 import ListProducts from "./components/ListProducts";
 import styled, { ThemeProvider } from "styled-components/macro";
 import ThemeContext from "./contexts/ThemeContext";
-import theme, { SFProText } from "./themes/Theme";
+import theme, { Fonts } from "./themes/Theme";
 
 const URL_API = "https://challenge-api.aerolab.co/";
 
@@ -97,7 +97,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <SFProText />
+      <Fonts />
       <ContainerApp>
         <MenuTop totalPrice={totalPrice} cantProducts={listProducts.length} />
         <ListProducts listProducts={listProducts} />
@@ -108,8 +108,14 @@ function App() {
 
 const ContainerApp = styled.div`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   font-family: SFProText;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 `;
 
 export default App;

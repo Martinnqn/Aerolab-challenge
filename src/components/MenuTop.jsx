@@ -42,6 +42,7 @@ const ContainerMenu = styled.div`
   ul {
     display: flex;
     align-items: center;
+    padding: 0;
   }
   ul li {
     margin-right: 5px;

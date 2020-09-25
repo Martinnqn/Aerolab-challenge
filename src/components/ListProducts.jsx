@@ -5,28 +5,45 @@ import Product from "./Product";
 const ListProducts = ({ listProducts }) => {
   return (
     <ContainerProducts>
-      {listProducts.map((element) => {
-        return (
-          <Product
-            key={element.id}
-            id={element.id}
-            image={element.photo}
-            title={element.name}
-            price={element.price}
-            originalPrice={element.originalPrice}
-          />
-        );
-      })}
+      <p>
+        <TitleContainer>Almacén</TitleContainer>
+      </p>
+      <ContainerListProducts>
+        {listProducts.map((element) => {
+          return (
+            <Product
+              key={element.id}
+              id={element.id}
+              image={element.photo}
+              title={element.name}
+              price={element.price}
+              originalPrice={element.originalPrice}
+            />
+          );
+        })}
+      </ContainerListProducts>
     </ContainerProducts>
   );
 };
 
-const ContainerProducts = styled.div`
-  padding: 10px;
+const ContainerListProducts = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background: #d0d0d0;
-  justify-content: center;
+  justify-content: space-between;
+  @media (min-width: 414px) {
+    justify-content: space-evenly;
+  }
 `;
 
+const ContainerProducts = styled.div`
+  padding: 10px;
+  max-width: 970px;
+  margin: auto;
+  background: #d0d0d0;
+`;
+
+const TitleContainer = styled.span`
+  font-family: HelveticaNeue-Medium;
+  font-size: 24px;
+`;
 export default ListProducts;
