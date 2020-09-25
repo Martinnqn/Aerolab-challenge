@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import MenuTop from "./components/MenuTop";
 import ListProducts from "./components/ListProducts";
@@ -10,7 +10,7 @@ const URL_API = "https://challenge-api.aerolab.co/";
 
 const products = [
   {
-    id: "7790040929906",
+    id: "779004092119906",
     name: "Galletitas Chocolate Chocolinas",
     price: 55,
     presentation: "170 gr",
@@ -20,7 +20,7 @@ const products = [
     updatedAt: "2020-08-30T00:44:33+00:00",
   },
   {
-    id: "7613035067837",
+    id: "76130350627837",
     name: "Cafe Instantaneo Suave NesCafe Dolca",
     price: 269.9,
     presentation: "170 gr",
@@ -30,7 +30,7 @@ const products = [
     updatedAt: "2020-09-05T00:44:33+00:00",
   },
   {
-    id: "7790040932708",
+    id: "779004120932708",
     name: "Galletitas de Vainilla Sabor Frutilla Merengadas",
     price: 44,
     presentation: "93 gr",
@@ -40,7 +40,7 @@ const products = [
     updatedAt: "2020-09-14T00:44:33+00:00",
   },
   {
-    id: "7794000597723",
+    id: "779400055597723",
     name: "Caldo de Verduras Wilde",
     price: 45.9,
     presentation: "12 un",
@@ -50,7 +50,7 @@ const products = [
     updatedAt: "2020-08-25T00:44:33+00:00",
   },
   {
-    id: "7794000960145",
+    id: "77940005960145",
     name: "Mayonesa Light Doypack Hellmanns",
     price: 55.9,
     presentation: "237 gr",
@@ -60,7 +60,7 @@ const products = [
     updatedAt: "2020-08-25T00:44:33+00:00",
   },
   {
-    id: "7794000960145",
+    id: "77940009260145",
     name: "Mayonesa Light Doypack Hellmanns",
     price: 55.9,
     presentation: "237 gr",
@@ -70,7 +70,7 @@ const products = [
     updatedAt: "2020-08-25T00:44:33+00:00",
   },
   {
-    id: "7794000960145",
+    id: "7794000960t145",
     name: "Mayonesa Light Doypack Hellmanns",
     price: 55.9,
     presentation: "237 gr",
@@ -80,7 +80,7 @@ const products = [
     updatedAt: "2020-08-25T00:44:33+00:00",
   },
   {
-    id: "7794000960145",
+    id: "77940009601d45",
     name: "Mayonesa Light Doypack Hellmanns",
     price: 55.9,
     presentation: "237 gr",
@@ -92,15 +92,40 @@ const products = [
 ];
 
 function App() {
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [listProducts, setListProduct] = useState(products);
+  const [listProducts, setListProduct] = useState(new Map());
+
+  function addProduct(id, dataProduct) {
+    let data = listProducts.get(id);
+    if (data === undefined) {
+      setListProduct(new Map(listProducts.set(id, dataProduct)));
+    } else {
+      data.cant = data.cant + 1;
+      setListProduct(new Map(listProducts.set(id, data)));
+    }
+  }
+
+  function removeProduct(id) {
+    let data = listProducts.get(id);
+    if (data !== undefined) {
+      if (data.cant > 1) {
+        data.cant = data.cant - 1;
+        setListProduct(new Map(listProducts.set(id, data)));
+      } else {
+        setListProduct(new Map(listProducts.remove(id)));
+      }
+    }
+  }
 
   return (
     <ThemeProvider theme={theme}>
       <Fonts />
       <ContainerApp>
-        <MenuTop totalPrice={totalPrice} cantProducts={listProducts.length} />
-        <ListProducts listProducts={listProducts} />
+        <MenuTop listProducts={listProducts} />
+        <ListProducts
+          listProducts={products}
+          addToCart={addProduct}
+          removeProduct={removeProduct}
+        />
       </ContainerApp>
     </ThemeProvider>
   );

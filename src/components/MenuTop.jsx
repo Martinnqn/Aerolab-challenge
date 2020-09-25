@@ -1,9 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/Combined Shape 2.png";
 import cart from "../assets/shopping-cart.png";
 import styled from "styled-components/macro";
 
-const MenuTop = ({ totalPrice, cantProducts }) => {
+const MenuTop = ({ listProducts }) => {
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [cantProducts, setCantProducts] = useState(0);
+
+  /**Actualizar el precio total cada vez que se modifica el carrito */
+  useEffect(() => {
+    updateTotal();
+  }, [listProducts]);
+
+  function updateTotal() {
+    let total = 0;
+    let cantProducts = 0;
+    listProducts.forEach((data, key) => {
+      total += data.cant * data.price;
+      cantProducts += data.cant;
+    });
+    setTotalPrice(total);
+    setCantProducts(cantProducts);
+  }
+
   return (
     <ContainerMenu>
       <ul>

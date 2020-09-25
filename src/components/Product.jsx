@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 
-const Product = ({ image, title, price, originalPrice, addToCart }) => {
+const Product = ({ dataProduct, addToCart }) => {
+  const [cant, setCant] = useState(1);
+  const { photo, name, price, originalPrice, id } = dataProduct;
+
   return (
     <CardProduct>
-      <Img src={image} alt={title} />
-      <TitleProduct>{title}</TitleProduct>
+      <Img src={photo} alt={name} />
+      <TitleProduct>{name}</TitleProduct>
       <Price>
         {originalPrice !== price && (
           <SpanOriginalPrice>{originalPrice}</SpanOriginalPrice>
         )}
         {price}
       </Price>
-      <AddCartButton onClick={() => addToCart}>
+      <AddCartButton
+        onClick={() => addToCart(id, { name: name, price: price, cant: cant })}
+      >
         Agregar al carrito
       </AddCartButton>
     </CardProduct>

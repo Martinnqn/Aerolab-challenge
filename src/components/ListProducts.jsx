@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components/macro";
 import Product from "./Product";
 
-const ListProducts = ({ listProducts }) => {
+const ListProducts = ({ listProducts, addToCart }) => {
   return (
     <ContainerProducts>
       <p>
@@ -13,11 +13,8 @@ const ListProducts = ({ listProducts }) => {
           return (
             <Product
               key={element.id}
-              id={element.id}
-              image={element.photo}
-              title={element.name}
-              price={element.price}
-              originalPrice={element.originalPrice}
+              addToCart={addToCart}
+              dataProduct={element}
             />
           );
         })}
