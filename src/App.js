@@ -92,39 +92,16 @@ const products = [
 ];
 
 function App() {
-  const [listProducts, setListProduct] = useState(new Map());
-
-  function addProduct(id, dataProduct) {
-    let data = listProducts.get(id);
-    if (data === undefined) {
-      setListProduct(new Map(listProducts.set(id, dataProduct)));
-    } else {
-      data.cant = data.cant + 1;
-      setListProduct(new Map(listProducts.set(id, data)));
-    }
-  }
-
-  function removeProduct(id) {
-    let data = listProducts.get(id);
-    if (data !== undefined) {
-      if (data.cant > 1) {
-        data.cant = data.cant - 1;
-        setListProduct(new Map(listProducts.set(id, data)));
-      } else {
-        setListProduct(new Map(listProducts.remove(id)));
-      }
-    }
-  }
+  const [userProducts, setUserProducts] = useState(new Map());
 
   return (
     <ThemeProvider theme={theme}>
       <Fonts />
       <ContainerApp>
-        <MenuTop listProducts={listProducts} />
+        <MenuTop listProducts={userProducts} />
         <ListProducts
-          listProducts={products}
-          addToCart={addProduct}
-          removeProduct={removeProduct}
+          userProducts={userProducts}
+          setUserProducts={setUserProducts}
         />
       </ContainerApp>
     </ThemeProvider>
