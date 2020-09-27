@@ -8,89 +8,6 @@ import theme, { Fonts } from "./themes/Theme";
 
 const URL_API = "https://challenge-api.aerolab.co/";
 
-const products = [
-  {
-    id: "779004092119906",
-    name: "Galletitas Chocolate Chocolinas",
-    price: 55,
-    presentation: "170 gr",
-    brand: "Chocolinas",
-    photo: "https://challenge-api.aerolab.co/static/products/7790040929906.jpg",
-    originalPrice: 55,
-    updatedAt: "2020-08-30T00:44:33+00:00",
-  },
-  {
-    id: "76130350627837",
-    name: "Cafe Instantaneo Suave NesCafe Dolca",
-    price: 269.9,
-    presentation: "170 gr",
-    brand: "Nescafé",
-    photo: "https://challenge-api.aerolab.co/static/products/7613035067837.jpg",
-    originalPrice: 269.9,
-    updatedAt: "2020-09-05T00:44:33+00:00",
-  },
-  {
-    id: "779004120932708",
-    name: "Galletitas de Vainilla Sabor Frutilla Merengadas",
-    price: 44,
-    presentation: "93 gr",
-    brand: "Merengadas",
-    photo: "https://challenge-api.aerolab.co/static/products/7790040932708.jpg",
-    originalPrice: 44,
-    updatedAt: "2020-09-14T00:44:33+00:00",
-  },
-  {
-    id: "779400055597723",
-    name: "Caldo de Verduras Wilde",
-    price: 45.9,
-    presentation: "12 un",
-    brand: "Wilde",
-    photo: "https://challenge-api.aerolab.co/static/products/7794000597723.jpg",
-    originalPrice: 45.9,
-    updatedAt: "2020-08-25T00:44:33+00:00",
-  },
-  {
-    id: "77940005960145",
-    name: "Mayonesa Light Doypack Hellmanns",
-    price: 55.9,
-    presentation: "237 gr",
-    brand: "Hellmann's",
-    photo: "https://challenge-api.aerolab.co/static/products/7794000960145.jpg",
-    originalPrice: 55.9,
-    updatedAt: "2020-08-25T00:44:33+00:00",
-  },
-  {
-    id: "77940009260145",
-    name: "Mayonesa Light Doypack Hellmanns",
-    price: 55.9,
-    presentation: "237 gr",
-    brand: "Hellmann's",
-    photo: "https://challenge-api.aerolab.co/static/products/7794000960145.jpg",
-    originalPrice: 55.9,
-    updatedAt: "2020-08-25T00:44:33+00:00",
-  },
-  {
-    id: "7794000960t145",
-    name: "Mayonesa Light Doypack Hellmanns",
-    price: 55.9,
-    presentation: "237 gr",
-    brand: "Hellmann's",
-    photo: "https://challenge-api.aerolab.co/static/products/7794000960145.jpg",
-    originalPrice: 55.9,
-    updatedAt: "2020-08-25T00:44:33+00:00",
-  },
-  {
-    id: "77940009601d45",
-    name: "Mayonesa Light Doypack Hellmanns",
-    price: 55.9,
-    presentation: "237 gr",
-    brand: "Hellmann's",
-    photo: "https://challenge-api.aerolab.co/static/products/7794000960145.jpg",
-    originalPrice: 55.9,
-    updatedAt: "2020-08-25T00:44:33+00:00",
-  },
-];
-
 function App() {
   const [userProducts, setUserProducts] = useState(new Map());
 
@@ -98,7 +15,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Fonts />
       <ContainerApp>
-        <MenuTop listProducts={userProducts} />
+        <MenuTop userProducts={userProducts} />
         <ListProducts
           userProducts={userProducts}
           setUserProducts={setUserProducts}

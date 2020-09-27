@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
+import ImageButtonCTA from "../assets/CTA-small.png";
 
-const Product = ({ dataProduct, addToCart }) => {
-  const [cant, setCant] = useState(1);
+const Product = ({ dataProduct, addToCart, removeFromCart, cantInCart }) => {
+  const [showMenuAdd, setShowMenuAdd] = useState(false);
   const { photo, name, price, originalPrice, id } = dataProduct;
+
+  const addProduct = (newCant) => {
+    addToCart(id, { name: name, price: price, cant: newCant });
+  };
+
+  const removeProduct = () => {
+    removeFromCart(id);
+  };
+
+  useEffect(() => {
+    if (cantInCart > 0) {
+      setShowMenuAdd(true);
+    } else {
+      setShowMenuAdd(false);
+    }
+  }, [cantInCart]);
 
   return (
     <CardProduct>
@@ -11,15 +28,22 @@ const Product = ({ dataProduct, addToCart }) => {
       <TitleProduct>{name}</TitleProduct>
       <Price>
         {originalPrice !== price && (
-          <SpanOriginalPrice>{originalPrice}</SpanOriginalPrice>
+          <SpanOriginalPrice>${originalPrice}</SpanOriginalPrice>
         )}
-        {price}
+        ${price}
       </Price>
-      <AddCartButton
-        onClick={() => addToCart(id, { name: name, price: price, cant: cant })}
-      >
-        Agregar al carrito
-      </AddCartButton>
+      {!showMenuAdd && (
+        <AddCartButton onClick={() => addProduct(1)}>
+          Agregar al carrito
+        </AddCartButton>
+      )}
+      {showMenuAdd && (
+        <MenuAddProduct
+          cant={cantInCart}
+          handleAddProduct={addProduct}
+          handleRemoveProduct={removeProduct}
+        />
+      )}
     </CardProduct>
   );
 };
@@ -86,6 +110,21 @@ const AddCartButton = styled.button`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const MenuAddProduct = ({ cant, handleAddProduct, handleRemoveProduct }) => {
+  return (
+    <>
+      <ButtonCTA onClick={() => handleRemoveProduct()}>-</ButtonCTA>
+      {cant}
+      <ButtonCTA onClick={() => handleAddProduct(cant + 1)}>+</ButtonCTA>
+    </>
+  );
+};
+
+const ButtonCTA = styled.button`
+  background-image: url("${ImageButtonCTA}");
+  background-size: cover;
 `;
 
 export default Product;

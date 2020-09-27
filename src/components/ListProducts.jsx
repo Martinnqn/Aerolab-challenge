@@ -12,12 +12,13 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
 
   function addUserProduct(id, dataProduct) {
     let data = userProducts.get(id);
-    if (data === undefined) {
+    /*if (data === undefined) {
       setUserProducts(new Map(userProducts.set(id, dataProduct)));
     } else {
       data.cant = data.cant + 1;
       setUserProducts(new Map(userProducts.set(id, data)));
-    }
+    }*/
+    setUserProducts(new Map(userProducts.set(id, dataProduct)));
   }
 
   function removeUserProduct(id) {
@@ -27,7 +28,8 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
         data.cant = data.cant - 1;
         setUserProducts(new Map(userProducts.set(id, data)));
       } else {
-        setUserProducts(new Map(userProducts.remove(id)));
+        userProducts.delete(id);
+        setUserProducts(new Map(userProducts));
       }
     }
   }
@@ -42,7 +44,6 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
         if (res.page_count) {
           setCantPage(res.page_count);
         }
-        console.log(res);
         setProducts([...products, ...res.products]);
       });
   };
@@ -65,13 +66,15 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
             <Product
               key={element.id}
               addToCart={addUserProduct}
+              removeFromCart={removeUserProduct}
               dataProduct={element}
+              cantInCart={userProducts.get(element.id)?.cant || 0}
             />
           );
         })}
       </ContainerListProducts>
       {loading && (
-        <h4 style={{ "text-align": "center" }}>Cargando productos...</h4>
+        <h4 style={{ textAlign: "center" }}>Cargando productos...</h4>
       )}
     </ContainerProducts>
   );
