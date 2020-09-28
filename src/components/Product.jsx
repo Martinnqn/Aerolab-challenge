@@ -24,7 +24,13 @@ const Product = ({ dataProduct, addToCart, removeFromCart, cantInCart }) => {
 
   return (
     <CardProduct>
-      <Img src={photo} alt={name} />
+      <picture>
+        <source
+          srcset={photo.substr(0, photo.lastIndexOf(".")) + ".webp"}
+          type="image/webp"
+        />
+        <Img src={photo} alt={name} />
+      </picture>
       <TitleProduct>{name}</TitleProduct>
       <Price>
         {originalPrice !== price && (
