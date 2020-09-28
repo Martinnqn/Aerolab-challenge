@@ -11,7 +11,7 @@ export default async (req, res) => {
   const dolarData = await fetch(URL_DOLLAR_PRICE);
   const data = await dolarData.json();
   const dollar = data.rate;
-  const page = req?.query?.page ?? "1";
+  const page = req.query.page != undefined ? req.query.page : "1";
   const dataAerolab = await getDataFromAerolab(page);
   const filterProducts = getUpdatedProducts(dataAerolab.products);
   const extendedProducts = extendsModel(dollar, filterProducts);
