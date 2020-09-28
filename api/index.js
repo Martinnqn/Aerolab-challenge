@@ -12,22 +12,24 @@ export default async (req, res) => {
   const data = await dolarData.json();
   const dollar = data.rate;
   const page = req?.query?.page ?? "1";
-  const products = await getProducts(page);
-  const filterProducts = getUpdatedProducts(products);
+  const dataAerolab = await getDataFromAerolab(page);
+  const filterProducts = getUpdatedProducts(dataAerolab.products);
   const extendedProducts = extendsModel(dollar, filterProducts);
+  dataAerolab.products = extendedProducts;
+  dataAerolab.per_page = extendedProducts.length;
   res.statusCode = 200;
-  res.json({ extendedProducts });
+  res.json({ ...dataAerolab });
 };
 
 /**
- * Return products list from Aerolab api.
+ * Return json data from Aerolab api.
  * @param {*} page
  */
-async function getProducts(page) {
+async function getDataFromAerolab(page) {
   let products;
   const res = await fetch(`${URL_PRODUCTS}?page=${page}`);
   products = await res.json();
-  return products.products;
+  return products;
 }
 
 /**

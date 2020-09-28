@@ -24,7 +24,7 @@ Este proyecto es una implementación del [desafío de Aerolab](https://github.co
    - :heavy_check_mark: Infinite scroll
    - :heavy_check_mark: Funcionalidades agregar/restar productos del carrito.
    - :heavy_check_mark: Persistir productos cuando se actualiza el sitio.
-3. [ ] API específica.
+3. :heavy_check_mark: API específica.
 4. :heavy_check_mark: [Site online en Vercel](https://aerolab-challenge.martinnqn.vercel.app/)
 
 ### Parte 2: Electric Boogaloo
@@ -98,3 +98,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## API
+
+La API provee un endpoint que extiende el modelo de datos de los productos de Aerolab agregándole los precios en dólares.
+Para consultar la api usar el path /api. ([Enlace aqui](https://aerolab-challenge.martinnqn.vercel.app/api)).
+Para consultar las diferentes páginas utilizar el parámetro `page`. Ejemplo: `/api?page=2`
