@@ -11,6 +11,7 @@ const URL_API = "https://challenge-api.aerolab.co/";
 function App() {
   const [userProducts, setUserProducts] = useState(new Map());
 
+  /**Load users products cart if exists in storage. */
   useEffect(() => {
     if (window.localStorage.getItem("userCart")) {
       setUserProducts(

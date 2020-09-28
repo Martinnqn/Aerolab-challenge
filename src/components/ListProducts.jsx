@@ -12,12 +12,6 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
 
   function addUserProduct(id, dataProduct) {
     let data = userProducts.get(id);
-    /*if (data === undefined) {
-      setUserProducts(new Map(userProducts.set(id, dataProduct)));
-    } else {
-      data.cant = data.cant + 1;
-      setUserProducts(new Map(userProducts.set(id, data)));
-    }*/
     setUserProducts(new Map(userProducts.set(id, dataProduct)));
     window.localStorage.setItem(
       "userCart",

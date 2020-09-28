@@ -9,7 +9,7 @@ Este proyecto es una implementación del [desafío de Aerolab](https://github.co
 # Table of contents
 
 - [Requerimientos cumplidos](#requerimientos-cumplidos)
-- [Tecnologías](#tecnologias)
+- [Tecnologías](#tecnologías)
 - [Frontend](#frontend)
 - [API](#API)
 
