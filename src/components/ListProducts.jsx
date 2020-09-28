@@ -19,6 +19,10 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
       setUserProducts(new Map(userProducts.set(id, data)));
     }*/
     setUserProducts(new Map(userProducts.set(id, dataProduct)));
+    window.localStorage.setItem(
+      "userCart",
+      JSON.stringify(Array.from(userProducts.entries()))
+    );
   }
 
   function removeUserProduct(id) {
@@ -31,6 +35,10 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
         userProducts.delete(id);
         setUserProducts(new Map(userProducts));
       }
+      window.localStorage.setItem(
+        "userCart",
+        JSON.stringify(Array.from(userProducts.entries()))
+      );
     }
   }
 

@@ -32,18 +32,20 @@ const Product = ({ dataProduct, addToCart, removeFromCart, cantInCart }) => {
         )}
         ${price}
       </Price>
-      {!showMenuAdd && (
-        <AddCartButton onClick={() => addProduct(1)}>
-          Agregar al carrito
-        </AddCartButton>
-      )}
-      {showMenuAdd && (
-        <MenuAddProduct
-          cant={cantInCart}
-          handleAddProduct={addProduct}
-          handleRemoveProduct={removeProduct}
-        />
-      )}
+      <Footer>
+        {!showMenuAdd && (
+          <AddCartButton onClick={() => addProduct(1)}>
+            Agregar al carrito
+          </AddCartButton>
+        )}
+        {showMenuAdd && (
+          <MenuAddProduct
+            cant={cantInCart}
+            handleAddProduct={addProduct}
+            handleRemoveProduct={removeProduct}
+          />
+        )}
+      </Footer>
     </CardProduct>
   );
 };
@@ -93,6 +95,12 @@ const SpanOriginalPrice = styled.span`
   text-decoration: line-through;
 `;
 
+const Footer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+`;
+
 const AddCartButton = styled.button`
   color: #0070e0;
   font-size: 13px;
@@ -116,7 +124,7 @@ const MenuAddProduct = ({ cant, handleAddProduct, handleRemoveProduct }) => {
   return (
     <>
       <ButtonCTA onClick={() => handleRemoveProduct()}>-</ButtonCTA>
-      {cant}
+      <p>{cant}</p>
       <ButtonCTA onClick={() => handleAddProduct(cant + 1)}>+</ButtonCTA>
     </>
   );
@@ -125,6 +133,14 @@ const MenuAddProduct = ({ cant, handleAddProduct, handleRemoveProduct }) => {
 const ButtonCTA = styled.button`
   background-image: url("${ImageButtonCTA}");
   background-size: cover;
+  color: white;
+  font-size: 13px;
+  border: none;
+  border-radius: 3px;
+  width: 32px;
+  height: 32px;
+  margin-top: 16px;
+  margin-bottom: 8px;
 `;
 
 export default Product;

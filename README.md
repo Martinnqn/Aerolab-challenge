@@ -1,8 +1,60 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Aerolab Coding Challenge
 
-## Available Scripts
+### ![EzShop](https://raw.githubusercontent.com/Martinnqn/Aerolab-challenge/master/src/assets/Combined%20Shape%202.png "EzShop") EzShop
 
-In the project directory, you can run:
+Este proyecto es una implementación del [desafío de Aerolab](https://github.com/Aerolab/challenge)
+
+---
+
+# Table of contents
+
+- [Requerimientos cumplidos](#requerimientos-cumplidos)
+- [Tecnologías](#tecnologias)
+- [Frontend](#frontend)
+- [API](#API)
+
+---
+
+## Requerimientos cumplidos
+
+### Parte 1
+
+1. [x] Vista mobile first.
+2. [x] Consumir API con React.
+   - [x] Infinite scroll
+   - [x] Funcionalidades agregar/restar productos del carrito.
+   - [x] Persistir productos cuando se actualiza el sitio.
+3. [ ] API específica.
+4. [x] [Site online en Vercel](https://aerolab-challenge.martinnqn.vercel.app/)
+
+### Parte 2: Electric Boogaloo
+
+#### UI
+
+a) [ ] Cambiar el formato de las imágenes.
+
+b) [ ] Avisar si la app está funcionando offline.
+
+#### JS
+
+a) [ ] Mejorar el rendimiento para conexiones _slow_.
+
+b) [ ] Crear árbol de categorías.
+
+---
+
+## Tecnologías
+
+- bootstrapped [Create React App](https://github.com/facebook/create-react-app).
+- React 16.13.1
+  - hooks
+  - functional components
+  - [Styled Components](https://styled-components.com/))
+- CSS3
+
+## Frontend
+
+Scripts de ejecución del frontend:
 
 ### `yarn start`
 
@@ -37,32 +89,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## API

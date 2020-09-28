@@ -11,6 +11,14 @@ const URL_API = "https://challenge-api.aerolab.co/";
 function App() {
   const [userProducts, setUserProducts] = useState(new Map());
 
+  useEffect(() => {
+    if (window.localStorage.getItem("userCart")) {
+      setUserProducts(
+        new Map(JSON.parse(window.localStorage.getItem("userCart")))
+      );
+    }
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <Fonts />
