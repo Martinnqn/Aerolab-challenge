@@ -19,27 +19,35 @@ Este proyecto es una implementación del [desafío de Aerolab](https://github.co
 
 ### Parte 1
 
-1. [x] Vista mobile first.
-2. [x] Consumir API con React.
-   - [x] Infinite scroll
-   - [x] Funcionalidades agregar/restar productos del carrito.
-   - [x] Persistir productos cuando se actualiza el sitio.
+1. :heavy_check_mark: Vista mobile first.
+2. ✔️ Consumir API con React.
+   - ✔️ Infinite scroll
+   - ✔️ Funcionalidades agregar/restar productos del carrito.
+   - ✔️ Persistir productos cuando se actualiza el sitio.
 3. [ ] API específica.
-4. [x] [Site online en Vercel](https://aerolab-challenge.martinnqn.vercel.app/)
+4. ✔️ [Site online en Vercel](https://aerolab-challenge.martinnqn.vercel.app/)
 
 ### Parte 2: Electric Boogaloo
 
 #### UI
 
-a) [ ] Cambiar el formato de las imágenes.
+a)
 
-b) [ ] Avisar si la app está funcionando offline.
+- [ ] Cambiar el formato de las imágenes.
+
+b)
+
+- [ ] Avisar si la app está funcionando offline.
 
 #### JS
 
-a) [ ] Mejorar el rendimiento para conexiones _slow_.
+a)
 
-b) [ ] Crear árbol de categorías.
+- [ ] Mejorar el rendimiento para conexiones _slow_.
+
+b)
+
+- [ ] Crear árbol de categorías.
 
 ---
 
@@ -49,7 +57,7 @@ b) [ ] Crear árbol de categorías.
 - React 16.13.1
   - hooks
   - functional components
-  - [Styled Components](https://styled-components.com/))
+  - [Styled Components](https://styled-components.com/)
 - CSS3
 
 ## Frontend
