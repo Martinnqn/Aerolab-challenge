@@ -37,17 +37,17 @@ a)
 
 b)
 
-- [ ] Avisar si la app está funcionando offline.
+- :heavy_check_mark: Avisar si la app está funcionando offline.
 
 #### JS
 
 a)
 
-- [ ] Mejorar el rendimiento para conexiones _slow_.
+- [ ] Mejorar el rendimiento para conexiones _slow_. Server side.
 
 b)
 
-- [ ] Crear árbol de categorías.
+- :heavy_check_mark: Crear árbol de categorías.
 
 ---
 
