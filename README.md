@@ -31,13 +31,9 @@ Este proyecto es una implementación del [desafío de Aerolab](https://github.co
 
 #### UI
 
-a)
+a) :heavy_check_mark: Cambiar el formato de las imágenes.
 
-- :heavy_check_mark: Cambiar el formato de las imágenes.
-
-b)
-
-- :heavy_check_mark: Avisar si la app está funcionando offline.
+b) :heavy_check_mark: Avisar si la app está funcionando offline.
 
 #### JS
 
@@ -45,9 +41,7 @@ a)
 
 - [ ] Mejorar el rendimiento para conexiones _slow_. Server side.
 
-b)
-
-- :heavy_check_mark: Crear árbol de categorías.
+b) :heavy_check_mark: Crear árbol de categorías.
 
 ---
 
@@ -99,6 +93,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## API
 
-La API provee un endpoint que extiende el modelo de datos de los productos de Aerolab agregándole los precios en dólares.
-Para consultar la api usar el path /api. ([Enlace aqui](https://aerolab-challenge.martinnqn.vercel.app/api)).
-Para consultar las diferentes páginas utilizar el parámetro `page`. Ejemplo: `/api?page=2`
+La API provee dos endpoint:
+
+- El primer endpoint se encuentra en el path /api ([Enlace aqui](https://aerolab-challenge.martinnqn.vercel.app/api)). Este endpoint extiende el modelo de datos de los productos de Aerolab agregándole los precios en dólares. Para consultar las diferentes páginas utilizar el parámetro `page`. Ejemplo: `/api?page=2`
+- EL segundo endpoint se encuentra en el path /api/category_tree ([Enlace aqui](https://aerolab-challenge.martinnqn.vercel.app/api/category_tree)). Genera un árbol de categorías a partir del endpoint [https://challenge-api.aerolab.co/categories](https://challenge-api.aerolab.co/categories).
