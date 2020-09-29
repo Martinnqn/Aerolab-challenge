@@ -3,18 +3,32 @@ import styled from "styled-components/macro";
 import ImageButtonCTA from "../assets/CTA-small.png";
 import { Placeholder } from "semantic-ui-react";
 
+/**
+ * Product represents a product view and his behaviour.
+ */
 const Product = ({ dataProduct, addToCart, removeFromCart, cantInCart }) => {
   const [showMenuAdd, setShowMenuAdd] = useState(false);
   const { photo, name, price, originalPrice, id } = dataProduct;
 
+  /**
+   * Adds this product to cart.
+   * @param {} newCant
+   */
   const addProduct = (newCant) => {
     addToCart(id, { name: name, price: price, cant: newCant });
   };
 
+  /**
+   * Removes this product from cart.
+   */
   const removeProduct = () => {
     removeFromCart(id);
   };
 
+  /**
+   * Show the CTAbutton for each product according to the number of units in the
+   * cart.
+   */
   useEffect(() => {
     if (cantInCart > 0) {
       setShowMenuAdd(true);
@@ -151,6 +165,9 @@ const ButtonCTA = styled.button`
   margin-bottom: 8px;
 `;
 
+/**
+ * Product PlaceHolder.
+ */
 export const PlaceHolderProduct = () => (
   <CardProduct>
     <Placeholder style={{ width: "100%" }}>

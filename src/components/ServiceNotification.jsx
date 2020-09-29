@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Message } from "semantic-ui-react";
 import styled from "styled-components/macro";
 
+/**
+ * Notify when app is working offline/online
+ */
 const SWNotification = () => {
   const [isOffline, setIsOffline] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -15,6 +18,8 @@ const SWNotification = () => {
 
   async function notifyOffOnLine() {
     if (navigator.onLine) {
+      //Check internet connection when is onLine.
+      //(onLine return true if is connected to net)
       const online = await fetch("/");
       if (online.status >= 200 && online.status < 300) {
         setIsOffline(false);
@@ -22,10 +27,7 @@ const SWNotification = () => {
         setIsOffline(true);
       }
     } else {
-      const online = await fetch("/");
-      if (online.status >= 200 && online.status < 300) {
-        setIsOffline(true);
-      }
+      setIsOffline(true);
     }
     setVisible(true);
     setTimeout(() => setVisible(false), 3000);
@@ -34,9 +36,17 @@ const SWNotification = () => {
   return (
     visible && (
       <Toast>
-        <Message size="tiny" compact positive={!isOffline} negative={isOffline}>
-          {isOffline && <>El sitio esta funcionando offline</>}
-          {!isOffline && <>El sitio esta funcionando online</>}
+        <Message
+          size="large"
+          compact
+          positive={!isOffline}
+          negative={isOffline}
+        >
+          {isOffline ? (
+            <>El sitio está funcionando offline</>
+          ) : (
+            <>El sitio está funcionando online</>
+          )}
         </Message>
       </Toast>
     )
@@ -45,9 +55,11 @@ const SWNotification = () => {
 
 const Toast = styled.div`
   position: fixed;
-  z-index: 1;
+  top: 60px;
+  z-index: 101;
   left: 50%;
   transform: translate(-50%, 0%);
+  box-shadow: 0 0 10px;
 `;
 
 export default SWNotification;
