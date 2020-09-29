@@ -33,7 +33,7 @@ Este proyecto es una implementación del [desafío de Aerolab](https://github.co
 
 a)
 
-- [ ] Cambiar el formato de las imágenes.
+- :heavy_check_mark: Cambiar el formato de las imágenes.
 
 b)
 

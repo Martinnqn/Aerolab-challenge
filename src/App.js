@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
 import MenuTop from "./components/MenuTop";
 import ListProducts from "./components/ListProducts";
 import styled, { ThemeProvider } from "styled-components/macro";
-import ThemeContext from "./contexts/ThemeContext";
 import theme, { Fonts } from "./themes/Theme";
-
-const URL_API = "https://challenge-api.aerolab.co/";
+import SWNotification from "./components/ServiceNotification";
 
 function App() {
   const [userProducts, setUserProducts] = useState(new Map());
@@ -24,6 +21,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Fonts />
       <ContainerApp>
+        <SWNotification />
         <MenuTop userProducts={userProducts} />
         <ListProducts
           userProducts={userProducts}

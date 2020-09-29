@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
-import Product from "./Product";
-//import InfiniteScroll from "react-infinite-scroller";
+import Product, { PlaceHolderProduct } from "./Product";
 import useInfiniteScroll from "react-infinite-scroll-hook";
+import _ from "lodash";
+
+const URL_API = "https://challenge-api.aerolab.co/products";
 
 const ListProducts = ({ userProducts, setUserProducts }) => {
   const [page, setPage] = useState(1);
@@ -11,7 +13,6 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
   const [loading, setLoading] = useState(false);
 
   function addUserProduct(id, dataProduct) {
-    let data = userProducts.get(id);
     setUserProducts(new Map(userProducts.set(id, dataProduct)));
     window.localStorage.setItem(
       "userCart",
@@ -38,7 +39,7 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
 
   const fetchMoreData = () => {
     setLoading(true);
-    fetch(`https://challenge-api.aerolab.co/products?page=${page}`)
+    fetch(`${URL_API}?page=${page}`)
       .then((res) => res.json())
       .then((res) => {
         setPage(page + 1);
@@ -63,6 +64,7 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
         <TitleContainer>Almacén</TitleContainer>
       </p>
       <ContainerListProducts ref={infiniteRef}>
+        {loading && _.times(6, (i) => <PlaceHolderProduct key={i} />)}
         {products.map((element) => {
           return (
             <Product
@@ -103,5 +105,4 @@ const TitleContainer = styled.span`
   font-size: 24px;
 `;
 
-const Loader = styled.h3``;
 export default ListProducts;

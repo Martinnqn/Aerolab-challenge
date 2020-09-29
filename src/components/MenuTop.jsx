@@ -9,25 +9,24 @@ const MenuTop = ({ userProducts }) => {
 
   /**Actualizar el precio total cada vez que se modifica el carrito */
   useEffect(() => {
+    function updateTotal() {
+      let total = 0;
+      let cantProducts = 0;
+      userProducts.forEach((data, key) => {
+        total += data.cant * data.price;
+        cantProducts += data.cant;
+      });
+      setTotalPrice(total);
+      setCantProducts(cantProducts);
+    }
     updateTotal();
   }, [userProducts]);
-
-  function updateTotal() {
-    let total = 0;
-    let cantProducts = 0;
-    userProducts.forEach((data, key) => {
-      total += data.cant * data.price;
-      cantProducts += data.cant;
-    });
-    setTotalPrice(total);
-    setCantProducts(cantProducts);
-  }
 
   return (
     <ContainerMenu>
       <ul>
         <li>
-          <img src={logo} />
+          <img src={logo} alt="logo" />
         </li>
         <li>
           <SpanBrand>Ez</SpanBrand>
@@ -37,7 +36,7 @@ const MenuTop = ({ userProducts }) => {
       <ul>
         <li>{totalPrice}</li>
         <li>
-          <img src={cart} />
+          <img src={cart} alt="cart" />
         </li>
         <li>
           <SpanCantProducts>

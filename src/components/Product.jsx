@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 import ImageButtonCTA from "../assets/CTA-small.png";
+import { Placeholder } from "semantic-ui-react";
 
 const Product = ({ dataProduct, addToCart, removeFromCart, cantInCart }) => {
   const [showMenuAdd, setShowMenuAdd] = useState(false);
@@ -26,7 +27,7 @@ const Product = ({ dataProduct, addToCart, removeFromCart, cantInCart }) => {
     <CardProduct>
       <picture>
         <source
-          srcset={photo.substr(0, photo.lastIndexOf(".")) + ".webp"}
+          srcSet={photo.substr(0, photo.lastIndexOf(".")) + ".webp"}
           type="image/webp"
         />
         <Img src={photo} alt={name} />
@@ -60,6 +61,7 @@ const CardProduct = styled.div`
   text-align: center;
   background: white;
   max-width: 148px;
+  width: 148px;
   max-height: 299px;
   padding: 8px;
   border-radius: 3px;
@@ -148,5 +150,21 @@ const ButtonCTA = styled.button`
   margin-top: 16px;
   margin-bottom: 8px;
 `;
+
+export const PlaceHolderProduct = () => (
+  <CardProduct>
+    <Placeholder style={{ width: "100%" }}>
+      <Placeholder.Header>
+        <Placeholder.Image />
+      </Placeholder.Header>
+      <Placeholder.Paragraph>
+        <Placeholder.Line length="full" />
+        <Placeholder.Line length="full" />
+        <Placeholder.Line length="full" />
+        <Placeholder.Line length="full" />
+      </Placeholder.Paragraph>
+    </Placeholder>
+  </CardProduct>
+);
 
 export default Product;
