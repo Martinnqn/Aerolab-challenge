@@ -6,12 +6,21 @@ import _ from "lodash";
 
 const URL_API = "https://challenge-api.aerolab.co/products";
 
-const ListProducts = ({ userProducts, setUserProducts }) => {
+/**
+ * Show a product list using the Products endpoint
+ * @param {*} param0
+ */
+const ProductsList = ({ userProducts, setUserProducts }) => {
   const [page, setPage] = useState(1);
   const [cantPage, setCantPage] = useState(2);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  /**
+   * Adds product to user cart. Also saves serialized cart in localstorage.
+   * @param {*} id
+   * @param {*} dataProduct
+   */
   function addUserProduct(id, dataProduct) {
     setUserProducts(new Map(userProducts.set(id, dataProduct)));
     window.localStorage.setItem(
@@ -20,6 +29,10 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
     );
   }
 
+  /**
+   * Removes product from user cart. Also updates cart in localstorage.
+   * @param {*} id
+   */
   function removeUserProduct(id) {
     let data = userProducts.get(id);
     if (data !== undefined) {
@@ -37,6 +50,7 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
     }
   }
 
+  /**Request Product endpoint and updates products list*/
   const fetchMoreData = () => {
     setLoading(true);
     fetch(`${URL_API}?page=${page}`)
@@ -87,10 +101,7 @@ const ListProducts = ({ userProducts, setUserProducts }) => {
 const ContainerListProducts = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  @media (min-width: 414px) {
-    justify-content: space-evenly;
-  }
+  justify-content: space-evenly;
 `;
 
 const ContainerProducts = styled.div`
@@ -105,4 +116,4 @@ const TitleContainer = styled.span`
   font-size: 24px;
 `;
 
-export default ListProducts;
+export default ProductsList;

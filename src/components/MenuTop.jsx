@@ -7,7 +7,7 @@ const MenuTop = ({ userProducts }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [cantProducts, setCantProducts] = useState(0);
 
-  /**Actualizar el precio total cada vez que se modifica el carrito */
+  /** Update the total price every time the cart is modified */
   useEffect(() => {
     function updateTotal() {
       let total = 0;
