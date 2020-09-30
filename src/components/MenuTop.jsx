@@ -34,7 +34,7 @@ const MenuTop = ({ userProducts }) => {
         </li>
       </ul>
       <ul>
-        <li>{totalPrice}</li>
+        <li>{totalPrice.toFixed(2)}</li>
         <li>
           <img src={cart} alt="cart" />
         </li>
